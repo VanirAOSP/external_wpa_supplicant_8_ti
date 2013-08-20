@@ -7,7 +7,7 @@
 LOCAL_PATH := $(call my-dir)
 
 WPA_BUILD_HOSTAPD := false
-ifneq ($(BOARD_HOSTAPD_DRIVER),)
+ifneq ($(BOARD_HOSTAPD_ ),)
   WPA_BUILD_HOSTAPD := true
   CONFIG_DRIVER_$(BOARD_HOSTAPD_DRIVER) := y
 endif
@@ -102,7 +102,7 @@ NEED_MD5=y
 NEED_SHA1=y
 
 OBJS += src/drivers/drivers.c
-L_CFLAGS += -DHOSTAPD
+L_CFLAGS += -DHOSTAPD -fno-strict-aliasing -Wno-error=strict-aliasing 
 
 ifdef CONFIG_WPA_TRACE
 L_CFLAGS += -DWPA_TRACE
